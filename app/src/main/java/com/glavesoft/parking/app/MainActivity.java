@@ -20,10 +20,10 @@ public class MainActivity extends AppCompatActivity {
 
         Main.getQueryID(this.getApplicationContext(), "channel", "message", 1, new Listener() {
             @Override
-            public void handler(final String s) {
+            public void handler(final String s) {    //开启子线程(非UI线程)执行耗时操作
                 Log.d("flag", "query id: " + s);
 
-                runOnUiThread(new Runnable() {
+                runOnUiThread(new Runnable() {       //调用runOnUiThread回到主线程更新UI
                     @Override
                     public void run() {
                         tv_smid.setText(s);
